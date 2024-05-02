@@ -8,7 +8,7 @@ CREATE TABLE Utente(
     DataNascita DATE,
     Email VARCHAR(50),
     Telefono VARCHAR(50)
-)
+)ENGINE=InnoDB;
 
 CREATE TABLE Tecnico(
     IDTecnico INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
