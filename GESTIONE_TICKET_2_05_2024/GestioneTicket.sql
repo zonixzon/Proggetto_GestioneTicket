@@ -1,5 +1,5 @@
--- CIAO LOLLIO
---CIAO PEDRO
+
+
 
 
 CREATE TABLE Tecnico(
