@@ -1,6 +1,3 @@
--- CIAO LOLLIO
---CIAO PEDRO
-
 CREATE TABLE Utente(
     IDUtente INT(6) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Nome VARCHAR(30),
@@ -42,4 +39,4 @@ CREATE TABLE Ticket(
 
     FOREIGN KEY(IDUtente) REFERENCES Utente(IDUtente),
     FOREIGN KEY(IDTecnico) REFERENCES Tecnico(IDUtente),
-)
+)ENGINE=InnoDB;
