@@ -5,6 +5,8 @@ CREATE TABLE Utente(
     DataNascita DATE,
     Email VARCHAR(50),
     Telefono VARCHAR(50)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE
 )ENGINE=InnoDB;
 
 CREATE TABLE Tecnico(
@@ -38,5 +40,7 @@ CREATE TABLE Ticket(
     IDPosizione INT(6),
 
     FOREIGN KEY(IDUtente) REFERENCES Utente(IDUtente),
-    FOREIGN KEY(IDTecnico) REFERENCES Tecnico(IDUtente),
+    FOREIGN KEY(IDTecnico) REFERENCES Tecnico(IDUtente)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE
 )ENGINE=InnoDB;
