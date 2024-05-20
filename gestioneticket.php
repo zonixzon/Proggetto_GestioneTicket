@@ -28,6 +28,7 @@ if(isset($_SESSION["IDUtente"])) {
 <?php
 $conn = mysqli_connect("localhost", "root", "", "progettogestioneticket") or die("Errore di connessione al server".mysqli_error($conn));
 
+<<<<<<< HEAD
 if(isset($_SESSION["IDUtente"])) {
     $utente = $_SESSION["IDUtente"];
     $sql = "SELECT t.IDTicket, t.IDCategoria, cp.ticket 
@@ -51,6 +52,31 @@ if(isset($_SESSION["IDUtente"])) {
     } else {
         echo "Nessun ticket trovato.";
     }
+=======
+$codice=$_SESSION["IDCodice"];
+$utente=$_SESSION["IDUtente"];
+if(is_null($_SESSION["IDCodice"])){
+?>
+<div class="Utente">
+
+    <?php
+
+    $sql= "SELECT T.ticket
+    FROM utente as U INNER JOIN ticket as T 
+    ON U.IDUtente = T.IDUtente INNER JOIN posizione as p ON T.IDPosizione=p.IDPosizione
+    INNER JOIN categoriaproblema as cp ON p.IDCategoria=cp.IDCategoria
+    WHERE U.IDUtente='$utente'";
+
+    echo "Ciao ".$utente." questi sono i tuoi ticket:";
+    $ris=mysqli_query($conn, $sql);
+    $righe=mysqli_num_rows($ris);
+    if($righe>=1){
+        while($righeUtente=mysqli_fetch_array($ris)){
+        echo "<tr><th>".$righeUtente["IDticket"]."</th>"."<th>".$righeUtente["IDUtente"]."</th>"."</th>"."<th>".$righeUtente["IDCategorie"]."</th></tr>";
+            }
+        }
+
+>>>>>>> dcf797c1bfe2c1f9eeba6d41b4e92f8606cbc04a
 }
 ?>
 <div class="Visticket">
