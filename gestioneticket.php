@@ -29,29 +29,29 @@ $conn=mysqli_connect("localhost", "root", "", "progettogestioneticket")
 or die("Errore di connessione al server".my_sqli_error($conn));
  
 
-$codice=$_SESSION["IDCodice"]
-$utente=$_SESSION["IDUtente"]
+$codice=$_SESSION["IDCodice"];
+$utente=$_SESSION["IDUtente"];
 if(is_null($_SESSION["IDCodice"])){
 ?>
 <div class="Utente">
 
     <?php
 
-    $sql= SELECT t.ticket
-    FROM (utente as U INNER JOIN ticket as t 
-    ON U.IDUtente = t.IDUtente) (ticket as t INNER JOIN posizione as p ON t.IDPosizione=p.IDPosizione)
-    (ticket as t INNER JOIN categoriaproblema as cp ON t.IDCategoria=cp.IDCategoria)
-    WHERE U.IDUtente='$utente';
+    $sql= "SELECT T.ticket
+    FROM utente as U INNER JOIN ticket as T 
+    ON U.IDUtente = T.IDUtente INNER JOIN posizione as p ON T.IDPosizione=p.IDPosizione
+    INNER JOIN categoriaproblema as cp ON p.IDCategoria=cp.IDCategoria
+    WHERE U.IDUtente='$utente'";
 
-    echo "Ciao ".$utente." questi sono i tuoi ticket:"
+    echo "Ciao ".$utente." questi sono i tuoi ticket:";
     $ris=mysqli_query($conn, $sql);
     $righe=mysqli_num_rows($ris);
     if($righe>=1){
         while($righeUtente=mysqli_fetch_array($ris)){
-        echo "<tr><th>".$righeUtente["IDticket"]."</th>"."<th>".$righeUtente["IDUtente"]."</th>"."</th>"."<th>".$righeUtente["IDCategoria"]."</th></tr>";
+        echo "<tr><th>".$righeUtente["IDticket"]."</th>"."<th>".$righeUtente["IDUtente"]."</th>"."</th>"."<th>".$righeUtente["IDCategorie"]."</th></tr>";
             }
         }
-    echo 
+
 }
 ?>
 <div class="Visticket">
